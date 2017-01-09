@@ -5,7 +5,16 @@ $(document).ready(function(){
   $newLinkUrl  = $("#link-url");
 
   $("#new-link").on('submit', createLink);
+
+  displayExistingLinks();
 })
+
+function displayExistingLinks(){
+  $.get("api/v1/links")
+  .then(function(links){
+    links.forEach(renderLink)
+  })
+}
 
 function createLink (event){
   event.preventDefault();
