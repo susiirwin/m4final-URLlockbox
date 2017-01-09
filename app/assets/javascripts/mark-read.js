@@ -17,7 +17,6 @@ $(document).ready(function(){
 
   var readLink = $(this).data("url")
 
-  // send the link to HotReads
   $.ajax( {
     method: 'POST',
     data: {url: readLink},
