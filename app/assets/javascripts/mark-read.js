@@ -1,6 +1,8 @@
 var $newLinkTitle, $newLinkUrl;
 
 $(document).ready(function(){
+  console.log('loaded')
+  
 
   $('#links-list').on('click', 'button.mark-read', function(){
     console.log('win')
@@ -16,7 +18,6 @@ $(document).ready(function(){
 
   var readLink = $(this).data("url")
 
-  // send the link to HotReads
   $.ajax( {
     method: 'POST',
     data: {url: readLink},
