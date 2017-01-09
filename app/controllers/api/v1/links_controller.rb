@@ -26,6 +26,13 @@ class Api::V1::LinksController < ApplicationController
     end
   end
 
+<<<<<<< HEAD
+=======
+  # def index
+  #   links = Link.all
+  #   render json: links, status: 201
+  # end
+>>>>>>> a41b0302fc336eadbb7f273802647dd88c440bc5
 
   private
 
