@@ -8,12 +8,14 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to :root
     else
+      flash[:notice] = "Something went wrong. Please Try Again"
       redirect_to :login
     end
   end
 
   def destroy
     session[:user_id] = nil
+    flash[:notice] = "You have successfully logged out."
     redirect_to :login
   end
 end
