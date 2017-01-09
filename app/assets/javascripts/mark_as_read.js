@@ -8,6 +8,6 @@ function submitReadLink(){
   $.ajax( {
     method: 'POST',
     data: {url: readLink},
-    url: "https://si-m4-final-service.herokuapp.com/"
+    url: "https://si-m4-final-service.herokuapp.com/links"
   })
 }
