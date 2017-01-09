@@ -6,7 +6,7 @@ $(document).ready(function(){
 
   $('#links-list').on('click', 'button.mark-read', function(){
     console.log('win')
-    // var $this = $(this);
+    var $this = $(this);
     var linkId = $this.parents('.link').data('id');
 
     // $.ajax({
