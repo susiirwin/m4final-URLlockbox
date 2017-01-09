@@ -9,6 +9,11 @@ class Api::V1::LinksController < ApplicationController
     end
   end
 
+  def index
+    links = Link.all
+    render json: links, status: 201
+  end
+
   def update
     @link = Link.find params[:id]
     @link.assign_attributes(link_params)
@@ -21,10 +26,13 @@ class Api::V1::LinksController < ApplicationController
     end
   end
 
-  def index
-    links = Link.all
-    render json: links, status: 201
-  end
+<<<<<<< HEAD
+=======
+  # def index
+  #   links = Link.all
+  #   render json: links, status: 201
+  # end
+>>>>>>> a41b0302fc336eadbb7f273802647dd88c440bc5
 
   private
 
