@@ -2,6 +2,7 @@ var $newLinkTitle, $newLinkUrl;
 
 $(document).ready(function(){
   console.log('loaded')
+  
 
   $('#links-list').on('click', 'button.mark-read', function(){
     console.log('win')
