@@ -16,7 +16,7 @@ $(document).ready(function(){
     $.ajax( {
       method: 'POST',
       data: {url: readLink},
-      url: "https://si-m4-final-service.herokuapp.com/links"
+      url: "http://si-m4-final-service.herokuapp.com/links"
     })
   })
 })
