@@ -5,12 +5,12 @@ $(document).ready(function(){
   $newLinkUrl  = $("#link-url");
 
   $("#new-link").on('submit', createLink);
-
-  displayExistingLinks();
 })
 
 function createLink (event){
   event.preventDefault();
+
+  console.log("win")
 
   var link = getLinkData();
 
@@ -27,8 +27,10 @@ function getLinkData() {
 }
 
 function renderLink(link){
+
   $("#links-list").prepend( linkHTML(link) )
   clearLink();
+
 }
 
 function linkHTML(link) {
@@ -46,13 +48,6 @@ function linkHTML(link) {
                 <button class='delete-link'>Delete</button>
               </p>
             </div>`
-}
-
-function displayExistingLinks() {
-  $.get("api/v1/links")
-  .then(function(links){
-    links.forEach(renderLink)
-  })
 }
 
 function clearLink() {
