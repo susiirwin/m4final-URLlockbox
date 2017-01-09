@@ -6,7 +6,7 @@ $(document).ready(function(){
 
     var $this = $(this);
     var linkId = $this.parents('.link').data('id');
-    var readLink = $(this).data("url")
+    var readLink = $(this).parents('.link').data("url")
 
     // $.ajax({
     //   url: '/api/v1/links/' + linkId,
