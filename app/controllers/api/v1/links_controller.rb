@@ -1,7 +1,7 @@
 class Api::V1::LinksController < ApplicationController
 
   def create
-    @link = Link.new link_params
+    @link = Link.new(link_params)
     if @link.save
       render json: @link, status: 201
     else
@@ -11,7 +11,7 @@ class Api::V1::LinksController < ApplicationController
 
   def update
     @link = Link.find params[:id]
-    @link.assign_attributes link_params
+    @link.assign_attributes(link_params)
     just_read = @link.read_changed? && @link.read
     if @link.save
       Read.create(link: @link) if just_read
@@ -19,6 +19,11 @@ class Api::V1::LinksController < ApplicationController
     else
       render json: @link.errors.full_messages, status: 500
     end
+  end
+
+  def index
+    links = Link.all
+    render json: links, status: 201
   end
 
   private

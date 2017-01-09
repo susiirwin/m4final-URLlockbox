@@ -5,12 +5,12 @@ $(document).ready(function(){
   $newLinkUrl  = $("#link-url");
 
   $("#new-link").on('submit', createLink);
+
+  displayExistingLinks();
 })
 
 function createLink (event){
   event.preventDefault();
-
-  console.log("win")
 
   var link = getLinkData();
 
@@ -28,7 +28,6 @@ function getLinkData() {
 
 function renderLink(link){
   $("#links-list").append( linkHTML(link) )
-  // clearLink();
 }
 
 function linkHTML(link) {
@@ -38,7 +37,7 @@ function linkHTML(link) {
               <p class='link-url'>${ link.url }</p>
 
               <p class="link_read">
-                ${ link.read }
+                Link has been Read? ${ link.read }
               </p>
               <p class="link_buttons">
                 <button class="mark-read">Mark as Read</button>
@@ -48,11 +47,18 @@ function linkHTML(link) {
             </div>`
 }
 
+function displayExistingLinks() {
+  $.get("api/v1/links")
+  .then(function(links){
+    links.forEach(renderLink)
+  })
+}
+
 function clearLink() {
   $newLinkTitle.val("");
   $newLinkUrl.val("");
 }
 
 function displayFailure(failureData){
-  console.log("FAILED attempt to create new Link: " + failureData.responseText);
+  alert("FAILED attempt to create new Link: " + failureData.responseText);
 }
