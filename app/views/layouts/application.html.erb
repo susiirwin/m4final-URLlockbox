@@ -2,12 +2,25 @@
 <html>
 <head>
   <title>URLockBox</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 <div class="container">
+
+  <% flash.each do |name, msg| -%>
+      <%= content_tag :div, msg, class: name %>
+    <% end -%>
+
+    <% if current_user %>
+    Signed in with <%= current_user.email %> | <%= link_to "Logout", logout_path %>
+  <% else %>
+    <%= link_to "Create Account", signup_path %> | <%= link_to "Login", login_path %>
+  <% end %>
+  <br />
+  <br />
+
   <%= yield %>
 </div>
 
