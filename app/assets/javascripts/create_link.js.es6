@@ -57,15 +57,14 @@ function attachUnreadEvent(id){
 function markRead(){
   var readLink = $(this).data("url")
   var id = $(this).data("id")
-  debugger
 
   $.ajax( {
     method: 'PUT',
     data: {read: true},
     url: `api/v1/links/${id}`
   })
-  .then($(`#link-${id} .Read-Button`).text('Mark as Unread'))
-  .then($(`#link-${id} .link_read`).text('Read? true'))
+  .then($(`#link-${id} .mark-read`).text('Mark as Unread'))
+  .then($(`#link-${id} .link_read`).text('true'))
   .then($(`#link-${id}`).addClass('read'))
   .then(attachUnreadEvent(id))
 }
@@ -74,14 +73,13 @@ function markUnread(){
   var readLink = $(this).data("url")
 
   var id = $(this).data("id")
-  debugger
   $.ajax( {
     method: 'PUT',
     data: {read: false},
     url: `api/v1/links/${id}`
   })
   .then($(`#link-${id} .mark-read`).text('Mark as Read'))
-  .then($(`#link-${id} .link_read`).text('Was it Read? false'))
+  .then($(`#link-${id} .link_read`).text('false'))
   .then($(`#link-${id}`).removeClass('read'))
   .then(attachReadEvent(id))
 }
@@ -93,7 +91,7 @@ function linkHTML(link) {if (link.read === false){
               <p class='link-url' >${ link.url }</p>
 
               <p class="link_read">
-                Was it Read? ${ link.read }
+                ${ link.read }
               </p>
               <p class="link_buttons" >
                 <button class="mark-read" data-id='${link.id}' data-url='${link.url}'>Mark as Read</button>
@@ -107,7 +105,7 @@ function linkHTML(link) {if (link.read === false){
               <p class='link-url' >${ link.url }</p>
 
               <p class="link_read">
-                Was it read? ${ link.read }
+                ${ link.read }
               </p>
               <p class="link_buttons" >
                 <button class="mark-read" data-id='${link.id}' data-url='${link.url}'>Mark as Unead</button>
