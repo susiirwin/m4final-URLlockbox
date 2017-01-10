@@ -38,18 +38,55 @@ function getLinkData() {
 function renderLink(link){
 
   $("#links-list").prepend( linkHTML(link) )
+  if (link.read === false) {
+    attachReadEvent(link.id)
+  } else {
+    attachUnreadEvent(link.id)
+  }
   clearLink();
 
 }
 
-function linkHTML(link) {
+function attachReadEvent(id){
+  $(`#link-${id} .mark-read`).on('click', markRead)
+}
+
+function attachUnreadEvent(id){
+  $(`#link-${id} .makr-read`).on('click', markUnread)
+}
+
+function markRead(){
+  var readLink = $(this).data("url")
+  var id = $(this).data("id")
+  $.ajax( {
+    method: 'PUT',
+    data: {read: true},
+    url: `api/v1/links/${id}`
+  })
+}
+
+function markUnread(){
+  var readLink = $(this).data("url")
+  var id = $(this).data("id")
+  $.ajax( {
+    method: 'PUT',
+    data: {read: false},
+    url: `api/v1/links/${id}`
+  })
+  .then($(`#link-${id} .mark-read`).text('Mark as Read'))
+  .then($(`#link-${id} .link_read`).text('Read? false'))
+  .then($(`#link-${id}`).removeClass('read'))
+  .then(attachReadEvent(id))
+}
+
+function linkHTML(link) {if (link.read === false){
 
     return `<div class='link' data-id='${link.id}' id="link-${link.id}">
               <p class='link-title'>${ link.title }</p>
               <p class='link-url' >${ link.url }</p>
 
               <p class="link_read">
-                ${ link.read }
+                Was it Read? ${ link.read }
               </p>
               <p class="link_buttons" >
                 <button class="mark-read" data-url='${link.url}'>Mark as Read</button>
@@ -57,6 +94,21 @@ function linkHTML(link) {
                 <button class='delete-link'>Delete</button>
               </p>
             </div>`
+          } else {
+            return `<div class='link read' data-id='${link.id}' id="link-${link.id}">
+              <p class='link-title'>${ link.title }</p>
+              <p class='link-url' >${ link.url }</p>
+
+              <p class="link_read">
+                Was it read? ${ link.read }
+              </p>
+              <p class="link_buttons" >
+                <button class="mark-read" data-url='${link.url}'>Mark as Unead</button>
+                <button class='edit-link'>Edit</button>
+                <button class='delete-link'>Delete</button>
+              </p>
+            </div>`
+          }
 }
 
 function clearLink() {
