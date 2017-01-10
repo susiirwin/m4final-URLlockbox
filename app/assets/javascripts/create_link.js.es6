@@ -57,15 +57,14 @@ function attachUnreadEvent(id){
 function markRead(){
   var readLink = $(this).data("url")
   var id = $(this).data("id")
-  debugger
 
   $.ajax( {
     method: 'PUT',
     data: {read: true},
     url: `api/v1/links/${id}`
   })
-  .then($(`#link-${id} .Read-Button`).text('Mark as Unread'))
-  .then($(`#link-${id} .link_read`).text('Read? true'))
+  .then($(`#link-${id} .mark-read`).text('Mark as Unread'))
+  .then($(`#link-${id} .link_read`).text('true'))
   .then($(`#link-${id}`).addClass('read'))
   .then(attachUnreadEvent(id))
 }
@@ -74,7 +73,6 @@ function markUnread(){
   var readLink = $(this).data("url")
 
   var id = $(this).data("id")
-  debugger
   $.ajax( {
     method: 'PUT',
     data: {read: false},
