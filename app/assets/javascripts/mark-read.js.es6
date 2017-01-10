@@ -8,12 +8,14 @@ $(document).ready(function(){
     var linkId = $this.parents('.link').data('id');
 
 
-  var readLink = $(this).data("url")
+    var readLink = $(this).data("url")
 
-  $.ajax( {
-    method: 'POST',
-    data: {url: readLink},
-    url: "https://si-m4-final-service.herokuapp.com/links"
-  })
+    if (readlink.read === true) {
+      $.ajax( {
+        method: 'POST',
+        data: {url: readLink},
+        url: "https://si-m4-final-service.herokuapp.com/links"
+      })
+    }
   })
 })
