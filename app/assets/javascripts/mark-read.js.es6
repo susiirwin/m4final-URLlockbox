@@ -1,7 +1,6 @@
 var $newLinkTitle, $newLinkUrl;
 
 $(document).ready(function(){
-
   $('#links-list').on('click', 'button.mark-read', function(){
 
     var $this = $(this);
@@ -10,12 +9,10 @@ $(document).ready(function(){
 
     var readLink = $(this).data("url")
 
-    if (readlink.read === true) {
-      $.ajax( {
-        method: 'POST',
-        data: {url: readLink},
-        url: "https://si-m4-final-service.herokuapp.com/links"
-      })
-    }
+    $.ajax( {
+      method: 'POST',
+      data: {url: readLink},
+      url: "https://si-m4-final-service.herokuapp.com/links"
+    })
   })
 })
