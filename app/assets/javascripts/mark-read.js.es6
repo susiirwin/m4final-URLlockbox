@@ -1,8 +1,15 @@
-$(document).ready(function(){
-  $('.mark-read').on('click', submitReadLink)
-});
+var $newLinkTitle, $newLinkUrl;
 
-function submitReadLink(){
+$(document).ready(function(){
+
+
+
+  $('#links-list').on('click', 'button.mark-read', function(){
+
+    var $this = $(this);
+    var linkId = $this.parents('.link').data('id');
+
+
   var readLink = $(this).data("url")
 
   $.ajax( {
@@ -10,4 +17,5 @@ function submitReadLink(){
     data: {url: readLink},
     url: "https://si-m4-final-service.herokuapp.com/links"
   })
-}
+  })
+})
