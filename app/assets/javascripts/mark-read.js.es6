@@ -9,11 +9,6 @@ $(document).ready(function(){
     var $this = $(this);
     var linkId = $this.parents('.link').data('id');
 
-    // $.ajax({
-    //   url: '/api/v1/links/' + linkId,
-    //   method: 'PATCH',
-    //   data: {read: true}
-    // });
 
   var readLink = $(this).data("url")
 
