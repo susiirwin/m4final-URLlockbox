@@ -14,6 +14,10 @@ class Api::V1::LinksController < ApplicationController
     render json: links, status: 201
   end
 
+  def edit
+    @link = Link.find(params[:id])
+  end
+
   def update
     @link = Link.find params[:id]
     @link.assign_attributes(link_params)
