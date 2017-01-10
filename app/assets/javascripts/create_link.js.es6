@@ -44,7 +44,6 @@ function renderLink(link){
     attachUnreadEvent(link.id)
   }
   clearLink();
-
 }
 
 function attachReadEvent(id){
@@ -52,29 +51,37 @@ function attachReadEvent(id){
 }
 
 function attachUnreadEvent(id){
-  $(`#link-${id} .makr-read`).on('click', markUnread)
+  $(`#link-${id} .mark-read`).on('click', markUnread)
 }
 
 function markRead(){
   var readLink = $(this).data("url")
   var id = $(this).data("id")
+  debugger
+
   $.ajax( {
     method: 'PUT',
     data: {read: true},
     url: `api/v1/links/${id}`
   })
+  .then($(`#link-${id} .Read-Button`).text('Mark as Unread'))
+  .then($(`#link-${id} .link_read`).text('Read? true'))
+  .then($(`#link-${id}`).addClass('read'))
+  .then(attachUnreadEvent(id))
 }
 
 function markUnread(){
   var readLink = $(this).data("url")
+
   var id = $(this).data("id")
+  debugger
   $.ajax( {
     method: 'PUT',
     data: {read: false},
     url: `api/v1/links/${id}`
   })
   .then($(`#link-${id} .mark-read`).text('Mark as Read'))
-  .then($(`#link-${id} .link_read`).text('Read? false'))
+  .then($(`#link-${id} .link_read`).text('Was it Read? false'))
   .then($(`#link-${id}`).removeClass('read'))
   .then(attachReadEvent(id))
 }
@@ -89,7 +96,7 @@ function linkHTML(link) {if (link.read === false){
                 Was it Read? ${ link.read }
               </p>
               <p class="link_buttons" >
-                <button class="mark-read" data-url='${link.url}'>Mark as Read</button>
+                <button class="mark-read" data-id='${link.id}' data-url='${link.url}'>Mark as Read</button>
                 <button class='edit-link'>Edit</button>
                 <button class='delete-link'>Delete</button>
               </p>
@@ -103,7 +110,7 @@ function linkHTML(link) {if (link.read === false){
                 Was it read? ${ link.read }
               </p>
               <p class="link_buttons" >
-                <button class="mark-read" data-url='${link.url}'>Mark as Unead</button>
+                <button class="mark-read" data-id='${link.id}' data-url='${link.url}'>Mark as Unead</button>
                 <button class='edit-link'>Edit</button>
                 <button class='delete-link'>Delete</button>
               </p>
