@@ -9,7 +9,9 @@ class LinksController < ApplicationController
     if @link.update_attributes(link_params)
       redirect_to root_path
     else
+      flash[:notice] = "That is an invalid URL."
       render :edit
+
     end
   end
 
