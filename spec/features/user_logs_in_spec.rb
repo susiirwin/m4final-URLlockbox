@@ -30,7 +30,7 @@ RSpec.describe "can create login account", :js => :true do
     fill_in "password", with: user.password
     click_on "Submit"
 
-    expect(current_path).to eq('/')
+    expect(current_path).to eq('/login')
     expect(page).to have_content("Logout")
 
     click_on "Logout"

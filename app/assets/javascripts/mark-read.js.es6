@@ -1,7 +1,7 @@
 var $newLinkTitle, $newLinkUrl;
 
 $(document).ready(function(){
-  $('#links-list').on('click', 'button.mark-read', function(){
+  $('#links-list').on('click', 'button.mark-read no-read', function(){
 
     var $this = $(this);
     var linkId = $this.parents('.link').data('id');
