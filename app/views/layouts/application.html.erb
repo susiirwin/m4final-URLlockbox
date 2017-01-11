@@ -8,10 +8,10 @@
 </head>
 <body>
 <div class="container">
-  
-  <% flash.each do |name, msg| -%>
+
+  <% flash.each do |name, msg| %>
       <%= content_tag :div, msg, class: name %>
-    <% end -%>
+    <% end %>
 
   <% if current_user %>
     Signed in with <%= current_user.email %> | <%= link_to "Logout", logout_path %>
@@ -26,3 +26,6 @@
 
 </body>
 </html>
+
+
+<%=  %>
