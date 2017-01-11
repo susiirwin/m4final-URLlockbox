@@ -4,4 +4,6 @@ class User < ApplicationRecord
   validates :email, confirmation: true
   validates :email, uniqueness: true
   validates_confirmation_of :password, message: "Passwords Must Match."
+  validates :password_confirmation, presence: true
+
 end

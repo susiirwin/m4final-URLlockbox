@@ -122,5 +122,5 @@ function clearLink() {
 }
 
 function displayFailure(failureData){
-  console.log("FAILED attempt to create new Link: " + failureData.responseText);
+  $('.alert').append("FAILED attempt to create new Link: " + failureData.responseText);
 }
