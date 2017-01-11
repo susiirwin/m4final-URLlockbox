@@ -96,7 +96,6 @@ function linkHTML(link) {if (link.read === false){
               <p class="link_buttons" >
                 <button class="mark-read" data-id='${link.id}' data-url='${link.url}'>Mark as Read</button>
                 <button class='edit-link'>Edit</button>
-                <button class='delete-link'>Delete</button>
               </p>
             </div>`
           } else {
@@ -110,7 +109,6 @@ function linkHTML(link) {if (link.read === false){
               <p class="link_buttons" >
                 <button class="mark-read" data-id='${link.id}' data-url='${link.url}'>Mark as Unead</button>
                 <a href='/links/${link.id}/edit' class='edit-link'>Edit</a>
-                <button class='delete-link'>Delete</button>
               </p>
             </div>`
           }
