@@ -1,7 +1,4 @@
 class LinksController < ApplicationController
-  def index
-    @hot_links = Link.hot
-  end
 
   def edit
     @link = Link.find(params[:id])

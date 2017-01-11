@@ -32,7 +32,7 @@ $(document).ready(function(){
     var currentSearch = $(this).val().toUpperCase();
 
     $('.link').each(function(index, link) {
-      if (link.children[1].innerText.toUpperCase().indexOf(currentSearch) !== -1) {
+      if ((link.children[0].innerText.toUpperCase() + ' ' + link.children[1].innerText.toUpperCase()).indexOf(currentSearch) !== -1) {
         $(link).show();
       } else {
         $(link).hide();
