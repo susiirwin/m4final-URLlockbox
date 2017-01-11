@@ -5,7 +5,8 @@ RSpec.describe "can create links", :js => :true do
     visit "/"
 
     user = User.create(email: "email@email.com",
-                    password: "password")
+                    password: "password",
+                    password_confirmation: "password")
 
     visit '/'
     click_on "Login"

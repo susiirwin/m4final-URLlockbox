@@ -3,7 +3,8 @@ require "rails_helper"
 RSpec.describe "can create login account", :js => :true do
   scenario "allow visitor to create an account and log in" do
     user = User.create(email: "email@email.com",
-                    password: "password")
+                    password: "password",
+                    password_confirmation: "password"))
 
     visit '/'
     click_on "Login"
@@ -20,7 +21,8 @@ RSpec.describe "can create login account", :js => :true do
 
   scenario "allows a registered user to Log Out of the Site" do
     user = User.create(email: "email@email.com",
-                    password: "password")
+                    password: "password",
+                    password_confirmation: "password"))
 
     visit '/'
     click_on "Login"
